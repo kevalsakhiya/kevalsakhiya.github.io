@@ -151,34 +151,42 @@ export const projects = [
 export const skills = [
   {
     group: 'Web Scraping & Crawling',
+    icon: 'bug',
     items: ['Scrapy', 'scrapy-playwright', 'Spidermon', 'BeautifulSoup', 'lxml / parsel', 'Selenium', 'Playwright', 'Requests'],
   },
   {
     group: 'Distributed & Async',
+    icon: 'nodes',
     items: ['Redis-backed crawling', 'asyncio', 'Multithreading', 'AutoThrottle tuning', 'Long-running job scaling'],
   },
   {
     group: 'Anti-Bot & Stealth',
+    icon: 'shield',
     items: ['Rotating proxies', 'CAPTCHA solving', 'TLS/JA3 handling', 'Browser fingerprinting', 'Session / cookie mgmt', 'UA/header rotation'],
   },
   {
     group: 'Data & Processing',
+    icon: 'funnel',
     items: ['ETL design', 'Data-quality validation', 'Pandas', 'NumPy', 'PySpark', 'Distributed computing', 'JSON / XML / CSV'],
   },
   {
     group: 'Databases',
+    icon: 'database',
     items: ['MongoDB', 'Redis', 'PostgreSQL', 'MySQL'],
   },
   {
     group: 'Orchestration & Deploy',
+    icon: 'workflow',
     items: ['Apache Airflow', 'Docker', 'Kubernetes', 'Scrapyd', 'Scrapy Cloud', 'Gerapy', 'Git', 'cron'],
   },
   {
     group: 'Cloud & APIs',
+    icon: 'cloud',
     items: ['AWS (EC2, S3, Glue, Lambda)', 'Azure Synapse', 'FastAPI', 'Django REST', 'GraphQL', 'WebSockets', 'Linux/Unix'],
   },
   {
     group: 'ML & MLOps',
+    icon: 'chip',
     items: ['Scikit-learn', 'TensorFlow', 'MLflow', 'Model deployment via FastAPI'],
   },
 ];

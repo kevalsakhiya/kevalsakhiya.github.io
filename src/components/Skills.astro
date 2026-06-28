@@ -1,8 +1,9 @@
 ---
+import Icon from './Icon.astro';
 import { skills, languages } from '../data/site';
 
 // Languages lead the toolchain as the first cell.
-const groups = [{ group: 'Languages', items: languages }, ...skills];
+const groups = [{ group: 'Languages', icon: 'code', items: languages }, ...skills];
 ---
 
 <section id="skills" class="section">
@@ -13,7 +14,10 @@ const groups = [{ group: 'Languages', items: languages }, ...skills];
     <div class="grid reveal">
       {groups.map((g) => (
         <div class="cell">
-          <div class="g-title">{g.group}</div>
+          <div class="g-head">
+            <Icon name={g.icon} size={16} class="g-ico" />
+            <span class="g-title">{g.group}</span>
+          </div>
           <ul class="items">
             {g.items.map((i, idx) => (
               <li class={idx === 0 ? 'lead' : ''}>{i}</li>
@@ -31,9 +35,11 @@ const groups = [{ group: 'Languages', items: languages }, ...skills];
     background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
   }
   .cell { padding: clamp(1.4rem, 2.6vw, 1.9rem); background: var(--bg2); }
+  .g-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: var(--accent-ink); }
+  .g-ico { flex-shrink: 0; }
   .g-title {
-    font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-ink);
-    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+    font-family: var(--font-mono); font-size: 0.74rem;
+    text-transform: uppercase; letter-spacing: 0.1em;
   }
   .items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .items li {
