@@ -17,7 +17,7 @@ const fmt = (d: Date) =>
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="section">
     <div class="container narrow">
-      <a class="back" href="/blog"><span class="mono">←</span> cd ~/blog</a>
+      <a class="back" href="/blog"><span class="mono">←</span> All posts</a>
       <header class="post-head reveal">
         <div class="meta">
           <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>

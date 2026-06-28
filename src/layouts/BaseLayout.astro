@@ -110,7 +110,7 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
                 }
               }
             },
-            { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+            { threshold: 0, rootMargin: '0px 0px -8% 0px' }
           );
           reveals.forEach((el) => io.observe(el));
         } else {
