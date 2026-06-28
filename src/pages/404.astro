@@ -4,17 +4,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Page not found" description="That page slipped through the crawl.">
   <section class="section">
-    <div class="container center">
-      <p class="eyebrow">404</p>
-      <h1 class="big">This page slipped through the crawl.</h1>
-      <p class="sub">The link is broken or the page has moved.</p>
-      <a class="btn btn-primary" href="/">Back home</a>
+    <div class="container wrap">
+      <div class="term reveal">
+        <div class="term-bar">
+          <span class="tdot red"></span>
+          <span class="tdot yellow"></span>
+          <span class="tdot green"></span>
+          <span class="term-title">keval@pipeline: ~</span>
+        </div>
+        <pre class="term-body"><span class="p">$</span> curl -s https://kevalsakhiya.github.io<span class="path" id="req-path">/…</span>
+<span class="err">curl: (22) requested URL returned error: 404</span>
+<span class="p">$</span> echo <span class="s">"this page slipped through the crawl"</span>
+this page slipped through the crawl
+<span class="p">$</span> <span class="cursor"></span></pre>
+      </div>
+
+      <div class="meta reveal" data-delay="120">
+        <p class="eyebrow">// 404 — not found</p>
+        <h1>This page slipped through the crawl.</h1>
+        <p class="sub">The link is broken or the page has moved.</p>
+        <a class="btn btn-primary" href="/">cd ~ <span class="mono">→</span></a>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .center { text-align: center; padding-block: clamp(3rem, 10vw, 7rem); }
-  .big { font-size: clamp(2rem, 6vw, 3.4rem); margin: 0.8rem 0 0.6rem; }
-  .sub { color: var(--text-soft); margin-bottom: 2rem; }
+  .wrap { max-width: 760px; display: grid; gap: 2.5rem; padding-block: clamp(3rem, 10vh, 6rem); }
+
+  .term {
+    border: 1px solid #2c3038; border-radius: 14px;
+    background: linear-gradient(180deg, #0d0f13, #0a0b0e); overflow: hidden;
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  }
+  .term-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1rem; border-bottom: 1px solid #23262d; background: #0e1014; }
+  .tdot { width: 11px; height: 11px; border-radius: 50%; }
+  .tdot.red { background: #ff5f57; }
+  .tdot.yellow { background: #febc2e; }
+  .tdot.green { background: #28c840; }
+  .term-title { margin-left: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: #646a73; }
+  .term-body { margin: 0; padding: 1.4rem 1.25rem; font-family: var(--font-mono); font-size: clamp(0.72rem, 1.6vw, 0.85rem); line-height: 2; color: #9aa0aa; white-space: pre-wrap; word-break: break-word; }
+  .term-body .p { color: #4ade80; }
+  .term-body .s { color: #4ade80; }
+  .term-body .path { color: #7dd3fc; }
+  .term-body .err { color: #ff5f57; }
+  .cursor { display: inline-block; width: 9px; height: 1.05em; background: #4ade80; vertical-align: text-bottom; animation: termBlink 1.05s step-end infinite; }
+  @keyframes termBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+  .meta h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-top: 0.8rem; }
+  .sub { color: var(--text-soft); margin: 0.8rem 0 1.8rem; }
+  .mono { font-family: var(--font-mono); }
 </style>
+
+<script is:inline>
+  (function () {
+    var el = document.getElementById('req-path');
+    if (el) el.textContent = location.pathname + location.search;
+  })();
+</script>

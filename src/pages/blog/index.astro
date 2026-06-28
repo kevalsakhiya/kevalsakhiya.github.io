@@ -13,26 +13,24 @@ const fmt = (d: Date) =>
 <BaseLayout title="Blog" description="Notes on web scraping, distributed crawling, anti-bot, and data engineering.">
   <section class="section">
     <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Writing</p>
-        <h2 class="section-title">Notes from the crawl</h2>
-        <p>Field notes on distributed scraping, anti-bot, data quality, and pipelines.</p>
-      </div>
+      <p class="eyebrow reveal">// blog</p>
+      <h1 class="section-title reveal" style="margin-bottom:0.9rem">Notes from the crawl</h1>
+      <p class="intro reveal">Field notes on distributed scraping, anti-bot, data quality, and pipelines.</p>
 
       {posts.length === 0 ? (
-        <p class="empty">No posts yet — first one's brewing.</p>
+        <p class="empty reveal"><span class="mono">$</span> ls ~/blog → <span class="faint">no posts yet — first one's brewing.</span></p>
       ) : (
         <ul class="posts">
-          {posts.map((post) => (
-            <li class="reveal">
+          {posts.map((post, i) => (
+            <li class="reveal" data-delay={(i % 2) * 70}>
               <a class="card post" href={`/blog/${post.id}/`}>
                 <div class="p-meta">
                   <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
-                  {post.data.tags.slice(0, 2).map((t) => <span class="chip">{t}</span>)}
+                  {post.data.tags.slice(0, 3).map((t) => <span class="tag">{t}</span>)}
                 </div>
-                <h3 class="p-title">{post.data.title}</h3>
+                <h2 class="p-title">{post.data.title}</h2>
                 <p class="p-desc">{post.data.description}</p>
-                <span class="read">Read post →</span>
+                <span class="read">read <span class="mono">→</span></span>
               </a>
             </li>
           ))}
@@ -43,12 +41,22 @@ const fmt = (d: Date) =>
 </BaseLayout>
 
 <style>
-  .empty { color: var(--text-faint); }
-  .posts { display: grid; gap: 1.25rem; }
-  .post { display: block; padding: 1.75rem; }
-  .post:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
-  .p-meta { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; color: var(--text-faint); font-size: 0.85rem; font-family: var(--font-mono); }
-  .p-title { font-size: 1.4rem; margin-top: 0.8rem; }
-  .p-desc { color: var(--text-soft); margin-top: 0.6rem; }
-  .read { display: inline-block; margin-top: 1.1rem; color: var(--accent-ink); font-weight: 500; font-size: 0.95rem; }
+  .intro { color: var(--text-soft); margin-bottom: clamp(2.25rem, 5vh, 3.5rem); }
+  .empty { font-family: var(--font-mono); color: var(--text-soft); }
+  .empty .faint { color: var(--text-faint); }
+  .mono { font-family: var(--font-mono); color: var(--accent); }
+
+  .posts { display: grid; gap: 1rem; }
+  .post { display: block; padding: clamp(1.5rem, 3vw, 2rem); }
+  .post:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+  .p-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-faint); }
+  .tag {
+    color: var(--accent-ink); padding: 0.2rem 0.55rem;
+    border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--border2)); border-radius: 99px;
+  }
+  .p-title { font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 600; margin-top: 0.85rem; }
+  .p-desc { color: var(--text-soft); margin-top: 0.6rem; font-size: 0.97rem; line-height: 1.6; }
+  .read { display: inline-block; margin-top: 1.1rem; font-family: var(--font-mono); color: var(--accent-ink); font-size: 0.85rem; }
+  .read .mono { color: inherit; }
 </style>

@@ -17,11 +17,11 @@ const fmt = (d: Date) =>
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="section">
     <div class="container narrow">
-      <a class="back" href="/blog">← All posts</a>
+      <a class="back" href="/blog"><span class="mono">←</span> cd ~/blog</a>
       <header class="post-head reveal">
         <div class="meta">
           <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
-          {post.data.tags.map((t) => <span class="chip">{t}</span>)}
+          {post.data.tags.map((t) => <span class="tag">{t}</span>)}
         </div>
         <h1>{post.data.title}</h1>
         <p class="lede">{post.data.description}</p>
@@ -34,11 +34,16 @@ const fmt = (d: Date) =>
 </BaseLayout>
 
 <style>
-  .narrow { max-width: 720px; }
-  .back { color: var(--text-faint); font-size: 0.9rem; font-weight: 500; }
+  .narrow { max-width: 740px; }
+  .back { font-family: var(--font-mono); color: var(--text-faint); font-size: 0.82rem; }
   .back:hover { color: var(--accent-ink); }
+  .back .mono { color: var(--accent); }
   .post-head { margin-top: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-  .meta { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; color: var(--text-faint); font-family: var(--font-mono); font-size: 0.85rem; }
+  .meta { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-faint); }
+  .tag {
+    color: var(--accent-ink); padding: 0.2rem 0.55rem;
+    border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--border2)); border-radius: 99px;
+  }
   .post-head h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 1rem; }
   .lede { color: var(--text-soft); font-size: 1.15rem; margin-top: 1rem; }
   .prose { margin-top: 2.5rem; font-size: 1.075rem; }
@@ -55,16 +60,17 @@ const fmt = (d: Date) =>
   .prose ol { list-style: decimal; }
   .prose strong { color: var(--text); font-weight: 600; }
   .prose blockquote {
-    border-left: 3px solid var(--accent); padding-left: 1.2rem; color: var(--text-faint); font-style: italic;
+    border-left: 2px solid var(--accent); padding-left: 1.2rem; color: var(--text-faint); font-style: italic;
   }
   .prose code {
-    font-family: var(--font-mono); font-size: 0.9em;
-    background: var(--bg-soft); padding: 0.15em 0.4em; border-radius: 5px; border: 1px solid var(--border);
+    font-family: var(--font-mono); font-size: 0.88em;
+    background: var(--surface2); padding: 0.15em 0.4em; border-radius: 5px; border: 1px solid var(--border2);
   }
+  /* Code blocks: always dark terminal styling (matches shiki github-dark) */
   .prose pre {
     padding: 1.25rem; border-radius: var(--radius-sm); overflow-x: auto;
-    border: 1px solid var(--border); font-size: 0.9rem;
+    background: #0d0f13 !important; border: 1px solid #2c3038; font-size: 0.875rem; line-height: 1.7;
   }
-  .prose pre code { background: none; border: none; padding: 0; }
+  .prose pre code { background: none; border: none; padding: 0; font-size: inherit; }
   .prose img { border-radius: var(--radius-sm); border: 1px solid var(--border); }
 </style>
