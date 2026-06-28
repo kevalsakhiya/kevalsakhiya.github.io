@@ -56,24 +56,25 @@ const nav = [
   .site-header.scrolled { border-bottom-color: var(--border); }
   .bar { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; gap: 1rem; }
 
-  .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+  .brand { display: flex; align-items: center; gap: 0.65rem; font-weight: 600; }
   .brand-mark {
     display: grid; place-items: center;
-    width: 2rem; height: 2rem; border-radius: 8px;
+    width: 2.1rem; height: 2.1rem; border-radius: 9px;
     background: var(--accent); color: var(--accent-contrast);
-    font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em;
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; letter-spacing: -0.02em;
+    box-shadow: 0 0 22px color-mix(in oklab, var(--accent) 45%, transparent);
   }
-  .brand-name { font-size: 0.98rem; }
+  .brand-name { font-size: 0.95rem; }
 
-  .nav { display: flex; gap: 1.6rem; }
-  .nav a { color: var(--text-soft); font-size: 0.95rem; font-weight: 500; transition: color 0.18s ease; }
+  .nav { display: flex; gap: clamp(1rem, 2.4vw, 1.8rem); }
+  .nav a { font-family: var(--font-mono); color: var(--text-soft); font-size: 0.82rem; transition: color 0.18s ease; }
   .nav a:hover { color: var(--text); }
 
   .actions { display: flex; align-items: center; gap: 0.6rem; }
   .icon-btn {
     display: grid; place-items: center;
     width: 2.3rem; height: 2.3rem; border-radius: 8px;
-    background: transparent; border: 1px solid var(--border); color: var(--text-soft);
+    background: var(--surface); border: 1px solid var(--border2); color: var(--text-soft);
     transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   }
   .icon-btn:hover { color: var(--text); border-color: var(--accent); }

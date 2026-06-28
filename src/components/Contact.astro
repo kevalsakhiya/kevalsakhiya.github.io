@@ -1,64 +1,63 @@
 ---
-import Icon from './Icon.astro';
 import { site, socials } from '../data/site';
+
+const contactLinks = socials.filter((s) => s.icon !== 'mail');
 ---
 
 <section id="contact" class="section">
   <div class="container">
     <div class="panel reveal">
-      <div class="left">
-        <p class="eyebrow">Contact</p>
-        <h2 class="section-title">Let's build something that scales</h2>
+      <div class="panel-glow" aria-hidden="true"></div>
+      <div class="inner">
+        <p class="eyebrow">// 06 — contact</p>
+        <h2 class="title">Got data that needs harvesting?</h2>
         <p class="blurb">
-          Have a crawl that keeps breaking, data that needs cleaning, or a pipeline to stand up?
-          I'm open to contract and full-time work — drop me a line.
+          I'm available for web-scraping &amp; data-engineering work. Let's scope your pipeline.
         </p>
-        <div class="cta">
-          <a class="btn btn-primary" href={`mailto:${site.email}`}>
-            <Icon name="mail" size={16} /> {site.email}
-          </a>
-          <a class="btn btn-ghost" href={site.resume} target="_blank" rel="noopener">
-            Résumé <Icon name="download" size={16} />
-          </a>
+        <a class="btn btn-primary email" href={`mailto:${site.email}`}>
+          <span class="mono">$</span> {site.email}
+        </a>
+        <div class="links">
+          {contactLinks.map((s, i) => (
+            <>
+              {i > 0 && <span class="dot">·</span>}
+              <a href={s.href} target="_blank" rel="noopener">{s.label.toLowerCase()}</a>
+            </>
+          ))}
+          <span class="dot">·</span>
+          <span class="loc">{site.location}</span>
         </div>
-        <p class="loc"><Icon name="pin" size={15} /> {site.location}</p>
       </div>
-
-      <ul class="links">
-        {socials.filter((s) => s.icon !== 'mail').map((s) => (
-          <li>
-            <a href={s.href} target="_blank" rel="noopener">
-              <span class="ic"><Icon name={s.icon} size={20} /></span>
-              <span class="lbl">{s.label}</span>
-              <Icon name="arrow" size={16} class="go" />
-            </a>
-          </li>
-        ))}
-      </ul>
     </div>
   </div>
 </section>
 
 <style>
   .panel {
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem);
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: clamp(2rem, 5vw, 3.5rem);
+    position: relative; overflow: hidden;
+    border: 1px solid var(--border2); border-radius: 24px;
+    background: linear-gradient(160deg, var(--surface), var(--bg2));
+    padding: clamp(2.5rem, 7vw, 5.25rem) clamp(1.5rem, 5vw, 4rem); text-align: center;
   }
-  .blurb { color: var(--text-soft); margin-top: 1rem; max-width: 44ch; }
-  .cta { display: flex; gap: 0.8rem; margin-top: 1.8rem; flex-wrap: wrap; }
-  .loc { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; color: var(--text-faint); font-size: 0.9rem; }
-
-  .links { display: grid; gap: 0.6rem; align-content: center; }
-  .links a {
-    display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
-    background: var(--bg-soft); transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+  .panel-glow {
+    position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 520px; pointer-events: none;
+    background: radial-gradient(circle, color-mix(in oklab, var(--accent) 20%, transparent), transparent 60%);
+    filter: blur(30px);
   }
-  .links a:hover { border-color: var(--accent); transform: translateX(3px); background: var(--surface); }
-  .ic { display: grid; place-items: center; color: var(--accent-ink); }
-  .lbl { font-weight: 500; flex-grow: 1; }
-  .go { color: var(--text-faint); }
+  .inner { position: relative; }
+  .title { font-size: clamp(1.9rem, 5.4vw, 3.6rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; max-width: 16ch; margin: 1.25rem auto 0; }
+  .blurb { color: var(--text-soft); margin: 1.1rem auto 2.1rem; max-width: 48ch; font-size: 1.05rem; }
+  .email { font-size: 1rem; }
+  .email .mono { font-family: var(--font-mono); }
 
-  @media (max-width: 720px) { .panel { grid-template-columns: 1fr; } }
+  .links {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: clamp(0.8rem, 3vw, 2rem); margin-top: 2.1rem;
+    font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-soft);
+  }
+  .links a { transition: color 0.18s ease; }
+  .links a:hover { color: var(--text); }
+  .dot { color: var(--border2); }
+  .loc { color: var(--text-faint); }
 </style>

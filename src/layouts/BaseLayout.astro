@@ -26,7 +26,7 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1117" />
+    <meta name="theme-color" content="#0a0b0d" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={canonical} />
@@ -50,7 +50,7 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -83,31 +83,72 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
   </head>
   <body>
     <a href="#main" class="sr-only">Skip to content</a>
+    <div class="atmos-grid" aria-hidden="true"></div>
+    <div class="atmos-glow" aria-hidden="true"></div>
     <Header />
     <main id="main">
       <slot />
     </main>
     <Footer />
 
-    <!-- Scroll reveal + active-section nav -->
+    <!-- Scroll reveal + count-up stats -->
     <script is:inline>
       (function () {
         const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!reduce) {
+
+        // Reveal on scroll (with optional data-delay stagger)
+        const reveals = document.querySelectorAll('.reveal');
+        if (!reduce && 'IntersectionObserver' in window) {
           const io = new IntersectionObserver(
             (entries) => {
               for (const e of entries) {
                 if (e.isIntersecting) {
+                  const d = parseInt(e.target.getAttribute('data-delay') || '0', 10);
+                  e.target.style.transitionDelay = d + 'ms';
                   e.target.classList.add('in');
                   io.unobserve(e.target);
                 }
               }
             },
-            { threshold: 0.12 }
+            { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
           );
-          document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+          reveals.forEach((el) => io.observe(el));
         } else {
-          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+          reveals.forEach((el) => el.classList.add('in'));
+        }
+
+        // Count-up numbers
+        const fmt = (v, format) => {
+          if (format === 'm') { const n = v / 1e6; return (n >= 10 ? Math.round(n) : Math.round(n * 10) / 10) + 'M'; }
+          if (format === 'k') { const n = v / 1e3; return (n >= 10 ? Math.round(n) : Math.round(n * 10) / 10) + 'k'; }
+          if (format === 'comma') return Math.round(v).toLocaleString('en-US');
+          if (format === 'dec1') return (Math.round(v * 10) / 10).toFixed(1);
+          return Math.round(v).toString();
+        };
+        const run = (el) => {
+          if (el.getAttribute('data-done')) return;
+          el.setAttribute('data-done', '1');
+          const target = parseFloat(el.getAttribute('data-count'));
+          const format = el.getAttribute('data-format') || 'plain';
+          const suffix = el.getAttribute('data-suffix') || '';
+          if (reduce) { el.textContent = fmt(target, format) + suffix; return; }
+          const dur = 1500, start = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - start) / dur);
+            const e = 1 - Math.pow(1 - t, 3);
+            el.textContent = fmt(target * e, format) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        const counters = document.querySelectorAll('[data-count]');
+        if ('IntersectionObserver' in window) {
+          const cio = new IntersectionObserver((entries) => {
+            entries.forEach((e) => { if (e.isIntersecting) { run(e.target); cio.unobserve(e.target); } });
+          }, { threshold: 0.5 });
+          counters.forEach((el) => cio.observe(el));
+        } else {
+          counters.forEach(run);
         }
       })();
     </script>

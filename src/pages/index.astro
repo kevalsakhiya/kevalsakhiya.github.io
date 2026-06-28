@@ -5,7 +5,6 @@ import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
-import Icon from '../components/Icon.astro';
 import { about, competencies, openSource, education } from '../data/site';
 ---
 
@@ -14,16 +13,20 @@ import { about, competencies, openSource, education } from '../data/site';
 
   <!-- About -->
   <section id="about" class="section">
-    <div class="container about-grid">
-      <div class="section-head reveal" style="margin-bottom:0">
-        <p class="eyebrow">About</p>
-        <h2 class="section-title">What I do</h2>
-      </div>
-      <div class="about-body reveal">
-        {about.map((p) => <p>{p}</p>)}
-        <ul class="competencies">
-          {competencies.map((c) => <li class="chip chip-accent">{c}</li>)}
-        </ul>
+    <div class="container">
+      <p class="eyebrow reveal">// 01 — about</p>
+      <div class="about-grid">
+        <h2 class="statement reveal">
+          I own the full path from <span class="accent">scrape</span> to
+          <span class="accent">ETL</span> to <span class="accent">delivery</span> —
+          and keep it running in production.
+        </h2>
+        <div class="about-body reveal" data-delay="100">
+          {about.map((p) => <p>{p}</p>)}
+          <ul class="competencies">
+            {competencies.map((c) => <li class="chip">{c}</li>)}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -33,35 +36,34 @@ import { about, competencies, openSource, education } from '../data/site';
   <Skills />
 
   <!-- Open source + education -->
-  <section class="section">
-    <div class="container os-grid">
-      <div>
-        <div class="section-head reveal" style="margin-bottom:1.5rem">
-          <p class="eyebrow">Open source</p>
-          <h2 class="section-title">Giving back</h2>
+  <section id="opensource" class="section">
+    <div class="container">
+      <div class="os-grid">
+        <div class="card os-lead reveal">
+          <p class="eyebrow">// 05 — open source</p>
+          <h3 class="os-h">Contributor to <span class="accent">scrapy/scrapy</span></h3>
+          <p class="os-p">{openSource[0].desc} Public scraping projects &amp; utilities live on GitHub.</p>
+          <div class="edu">
+            <span class="edu-k">education</span>
+            <span class="edu-v">{education.degree} · {education.place}</span>
+          </div>
         </div>
-        <ul class="os-list">
-          {openSource.map((o) => (
-            <li class="reveal">
-              <a class="card os-item" href={o.href} target="_blank" rel="noopener">
-                <div>
-                  <h3 class="os-title">{o.title}</h3>
-                  <p class="os-desc">{o.desc}</p>
-                </div>
-                <Icon name="arrow" size={18} class="os-go" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="edu reveal">
-        <div class="section-head" style="margin-bottom:1.5rem">
-          <p class="eyebrow">Education</p>
-          <h2 class="section-title">Background</h2>
-        </div>
-        <div class="card edu-card">
-          <h3>{education.degree}</h3>
-          <p>{education.place}</p>
+
+        <div class="os-links">
+          <a class="card link-card reveal" href="https://github.com/kevalsakhiya" target="_blank" rel="noopener" data-delay="60">
+            <div>
+              <div class="lc-k">github</div>
+              <div class="lc-v">github.com/kevalsakhiya</div>
+            </div>
+            <span class="lc-arrow">↗</span>
+          </a>
+          <a class="card link-card reveal" href="https://www.linkedin.com/in/kevalsakhiya" target="_blank" rel="noopener" data-delay="120">
+            <div>
+              <div class="lc-k">linkedin</div>
+              <div class="lc-v">linkedin.com/in/kevalsakhiya</div>
+            </div>
+            <span class="lc-arrow">↗</span>
+          </a>
         </div>
       </div>
     </div>
@@ -71,23 +73,26 @@ import { about, competencies, openSource, education } from '../data/site';
 </BaseLayout>
 
 <style>
-  .about-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .accent { color: var(--accent); }
+
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(2rem, 5vw, 4rem); align-items: start; margin-top: 1.25rem; }
+  .statement { font-size: clamp(1.55rem, 3.4vw, 2.5rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
   .about-body { display: grid; gap: 1.1rem; }
-  .about-body p { color: var(--text-soft); font-size: 1.05rem; }
+  .about-body p { color: var(--text-soft); font-size: 1.02rem; line-height: 1.7; }
   .competencies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
-  .os-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
-  .os-list { display: grid; gap: 1rem; }
-  .os-item { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.4rem 1.5rem; }
-  .os-item:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .os-title { font-size: 1.1rem; }
-  .os-desc { color: var(--text-soft); margin-top: 0.3rem; font-size: 0.95rem; }
-  .os-go { color: var(--text-faint); flex-shrink: 0; }
-  .edu-card { padding: 1.5rem; }
-  .edu-card h3 { font-size: 1.1rem; }
-  .edu-card p { color: var(--text-faint); margin-top: 0.4rem; }
+  .os-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; align-items: stretch; }
+  .os-lead { padding: clamp(1.75rem, 3vw, 2.5rem); }
+  .os-h { font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 600; letter-spacing: -0.02em; margin-top: 1.1rem; }
+  .os-p { color: var(--text-soft); margin-top: 0.75rem; font-size: 0.97rem; line-height: 1.65; max-width: 52ch; }
+  .edu { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .edu-k { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-ink); text-transform: uppercase; letter-spacing: 0.1em; }
+  .edu-v { color: var(--text-soft); font-size: 0.95rem; }
 
-  @media (max-width: 820px) {
-    .about-grid, .os-grid { grid-template-columns: 1fr; }
-  }
+  .os-links { display: flex; flex-direction: column; gap: 1rem; }
+  .link-card { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem 1.6rem; }
+  .link-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .lc-k { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-faint); margin-bottom: 0.3rem; }
+  .lc-v { font-size: 1.05rem; font-weight: 600; }
+  .lc-arrow { font-family: var(--font-mono); font-size: 1.25rem; color: var(--accent); }
 </style>

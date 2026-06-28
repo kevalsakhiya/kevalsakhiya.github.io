@@ -26,12 +26,13 @@ export const socials = [
   { label: 'Email', href: 'mailto:kevalsakhiya@gmail.com', icon: 'mail' },
 ];
 
-// Headline numbers for the stats band.
+// Headline numbers for the stats band. `count`/`format`/`suffix` drive the
+// count-up animation; `format` ∈ plain | k | m | comma | dec1.
 export const stats = [
-  { value: '7+', label: 'Years building crawlers' },
-  { value: '500k+', label: 'Records / day at peak' },
-  { value: '40+', label: 'Scrapers in production' },
-  { value: '1M+', label: 'Posts / day pipelines' },
+  { count: 7, format: 'plain', suffix: '+', label: 'Years in production' },
+  { count: 500000, format: 'k', suffix: '+', label: 'Records / day at peak', accent: true },
+  { count: 40, format: 'plain', suffix: '+', label: 'Scrapers in prod' },
+  { count: 1000000, format: 'm', suffix: '+', label: 'Posts / day pipelines' },
 ];
 
 export const about = [
@@ -98,37 +99,51 @@ export const experience = [
   },
 ];
 
+// `figures` render as a 2-up metric grid on each card. Each is either a
+// count-up number ({ count, format, suffix }) or a static label ({ text }).
 export const projects = [
   {
     title: 'County Property & Mortgage Data Pipeline',
     blurb:
       'Harvested public mortgage and property records scattered across 40+ US government county portals into one cleaned, monitored ETL pipeline — with instant alerts the moment a run fails.',
-    tag: 'Distributed crawl',
-    metrics: ['500k+ records/day', '40+ scrapers', 'Monitored ETL'],
+    tag: 'Real Estate',
+    figures: [
+      { count: 500000, format: 'k', suffix: '+', label: 'records / day' },
+      { count: 40, format: 'plain', suffix: '+', label: 'scrapers' },
+    ],
     stack: ['Scrapy', 'Redis', 'Airflow', 'PostgreSQL', 'Spidermon'],
   },
   {
     title: 'Self-Healing Broker-Intelligence Pipeline',
     blurb:
-      'Weekly Scrapy system scraping two registries that validates, dedupes, and repairs bad rows mid-run — delivering thousands of broker profiles with zero manual cleanup between runs.',
-    tag: 'Data quality',
-    metrics: ['15,500+ brokers/week', '95.6% coverage', 'Self-healing'],
+      'Weekly Scrapy system scraping two registries that validates, dedupes, and repairs bad rows mid-run — delivering broker profiles with zero manual cleanup between runs.',
+    tag: 'Market Intelligence',
+    figures: [
+      { count: 15500, format: 'comma', suffix: '+', label: 'brokers / week' },
+      { count: 95.6, format: 'dec1', suffix: '%', label: 'coverage' },
+    ],
     stack: ['Scrapy', 'Spidermon', 'MongoDB', 'Validation pipelines'],
   },
   {
     title: 'Reddit Sentiment Pipeline for ML Signals',
     blurb:
-      'Apache Airflow ETL pulling 1M+ Reddit posts/day across 2,000+ subreddits, scored with NLP and embedding models and delivered ready for downstream prediction models.',
-    tag: 'NLP',
-    metrics: ['1M+ posts/day', '2,000+ subreddits', 'ML-ready'],
+      'Apache Airflow ETL pulling Reddit posts across thousands of subreddits, scored with NLP and embedding models — delivered ready for downstream prediction models.',
+    tag: 'Finance',
+    figures: [
+      { count: 1000000, format: 'm', suffix: '+', label: 'posts / day' },
+      { count: 2000, format: 'comma', suffix: '+', label: 'subreddits' },
+    ],
     stack: ['Airflow', 'Python', 'NLP / embeddings', 'PySpark'],
   },
   {
     title: 'ML-Ready Sports Data Feature Store',
     blurb:
-      'Scrapers across many sports sites feeding a pipeline that cleans, normalises, and vectorises match and player data into a model-ready feature store, auto-refreshed as new matches complete.',
-    tag: 'AI training data',
-    metrics: ['3M+ data points', 'Auto-refreshed', 'Feature store'],
+      'Scrapers across many sports sites feeding a pipeline that cleans, normalises, and vectorises match and player data into a model-ready feature store — auto-refreshed as new matches complete.',
+    tag: 'Sports',
+    figures: [
+      { count: 3000000, format: 'm', suffix: '+', label: 'data points' },
+      { text: 'live', label: 'auto-refresh' },
+    ],
     stack: ['Scrapy', 'PySpark', 'Feature engineering', 'AWS'],
   },
 ];

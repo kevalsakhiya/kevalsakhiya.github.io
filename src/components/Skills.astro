@@ -1,21 +1,23 @@
 ---
 import { skills, languages } from '../data/site';
+
+// Languages lead the toolchain as the first cell.
+const groups = [{ group: 'Languages', items: languages }, ...skills];
 ---
 
 <section id="skills" class="section">
   <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Toolkit</p>
-      <h2 class="section-title">The stack I reach for</h2>
-      <p>Languages: {languages.join(' · ')}</p>
-    </div>
+    <p class="eyebrow reveal">// 04 — technical skills</p>
+    <h2 class="section-title reveal" style="margin-bottom:clamp(2.25rem,5vh,3.5rem)">The toolchain</h2>
 
-    <div class="grid">
-      {skills.map((g) => (
-        <div class="group card reveal">
-          <h3 class="g-title">{g.group}</h3>
+    <div class="grid reveal">
+      {groups.map((g) => (
+        <div class="cell">
+          <div class="g-title">{g.group}</div>
           <ul class="items">
-            {g.items.map((i) => <li class="chip">{i}</li>)}
+            {g.items.map((i, idx) => (
+              <li class={idx === 0 ? 'lead' : ''}>{i}</li>
+            ))}
           </ul>
         </div>
       ))}
@@ -24,9 +26,19 @@ import { skills, languages } from '../data/site';
 </section>
 
 <style>
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .group { padding: 1.5rem; }
-  .g-title { font-size: 1.05rem; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 1rem; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .cell { padding: clamp(1.4rem, 2.6vw, 1.9rem); background: var(--bg2); }
+  .g-title {
+    font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-ink);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+  }
   .items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .items li {
+    font-size: 0.86rem; color: var(--text-soft);
+    padding: 0.38rem 0.7rem; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface);
+  }
+  .items li.lead { color: var(--text); }
 </style>

@@ -4,28 +4,33 @@ import { projects } from '../data/site';
 
 <section id="projects" class="section">
   <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Selected work</p>
-      <h2 class="section-title">Pipelines that run, recover, and scale</h2>
-      <p>Flagship client systems — production crawlers and ETL feeding analytics and ML. Built under contract, so details are anonymised.</p>
-    </div>
+    <p class="eyebrow reveal">// 03 — key projects</p>
+    <h2 class="section-title reveal" style="margin-bottom:clamp(2.25rem,5vh,3.5rem)">Pipelines I've engineered</h2>
 
     <div class="grid">
-      {projects.map((p) => (
-        <article class="card project reveal">
+      {projects.map((p, i) => (
+        <article class="card project reveal" data-delay={(i % 2) * 80}>
           <div class="p-top">
             <span class="chip chip-accent">{p.tag}</span>
+            <span class="p-idx">{String(i + 1).padStart(2, '0')}</span>
           </div>
           <h3 class="p-title">{p.title}</h3>
           <p class="p-blurb">{p.blurb}</p>
 
-          <ul class="metrics">
-            {p.metrics.map((m) => <li>{m}</li>)}
-          </ul>
-
-          <ul class="stack">
-            {p.stack.map((s) => <li>{s}</li>)}
-          </ul>
+          <div class="figs">
+            {p.figures.map((f) => (
+              <div class="fig">
+                <div class="fig-val">
+                  {'count' in f && f.count !== undefined ? (
+                    <span data-count={f.count} data-format={f.format} data-suffix={f.suffix}>0</span>
+                  ) : (
+                    f.text
+                  )}
+                </div>
+                <div class="fig-lbl">{f.label}</div>
+              </div>
+            ))}
+          </div>
         </article>
       ))}
     </div>
@@ -33,23 +38,21 @@ import { projects } from '../data/site';
 </section>
 
 <style>
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .project { padding: 1.75rem; display: flex; flex-direction: column; }
-  .project:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
-  .p-top { margin-bottom: 1rem; }
-  .p-title { font-size: 1.3rem; }
-  .p-blurb { color: var(--text-soft); margin-top: 0.7rem; font-size: 0.98rem; flex-grow: 1; }
-
-  .metrics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; }
-  .metrics li {
-    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500;
-    color: var(--accent-ink); background: var(--accent-soft);
-    padding: 0.3rem 0.6rem; border-radius: 6px;
-  }
-
-  .stack { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; margin-top: 1.3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
-  .stack li { font-size: 0.84rem; color: var(--text-faint); }
-  .stack li:not(:last-child)::after { content: '·'; margin-left: 0.9rem; color: var(--border); }
-
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2.2vw, 1.4rem); }
   @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .project { padding: clamp(1.5rem, 3vw, 2rem); display: flex; flex-direction: column; }
+  .project:hover { transform: translateY(-3px); border-color: var(--border2); }
+
+  .p-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .p-idx { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+  .p-title { font-size: 1.3rem; font-weight: 600; line-height: 1.2; }
+  .p-blurb { color: var(--text-soft); margin-top: 0.75rem; font-size: 0.95rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1.5rem; }
+
+  .figs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border); border: 1px solid var(--border); border-radius: 11px; overflow: hidden;
+  }
+  .fig { padding: 0.95rem 1rem; background: var(--bg); }
+  .fig-val { font-size: 1.5rem; font-weight: 600; color: var(--accent); letter-spacing: -0.02em; }
+  .fig-lbl { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); margin-top: 0.2rem; }
 </style>
