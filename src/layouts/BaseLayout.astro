@@ -26,6 +26,7 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1117" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={canonical} />
@@ -57,9 +58,9 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
     <script is:inline>
       (function () {
         try {
+          // Dark is the default; honour an explicit saved choice if present.
           const saved = localStorage.getItem('theme');
-          const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
-          document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+          document.documentElement.dataset.theme = saved || 'dark';
         } catch (e) {}
       })();
     </script>
