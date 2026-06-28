@@ -1,7 +1,7 @@
 ---
 title: "AI Is a Fallback, Not a Scraper"
 description: "Using an LLM to scrape every page is slow, expensive, and quietly unreliable. Used as a self-healing fallback that repairs broken selectors and caches the fix, it's genuinely useful. Here's the line between the two."
-pubDate: 2026-06-28
+pubDate: 2026-06-16
 tags: ["ai", "llm", "self-healing"]
 draft: false
 ---

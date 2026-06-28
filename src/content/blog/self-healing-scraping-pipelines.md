@@ -1,7 +1,7 @@
 ---
 title: "Scrapers Don't Crash — They Lie"
 description: "Scrapers don't fail loudly — they fail silently, returning fewer or subtly wrong rows. Here's how I build pipelines that validate, repair, and alert instead of quietly rotting."
-pubDate: 2026-05-27
+pubDate: 2024-05-21
 tags: ["data-quality", "spidermon", "etl"]
 draft: false
 ---

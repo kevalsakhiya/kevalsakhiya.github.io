@@ -1,7 +1,7 @@
 ---
 title: "Why Your Scraper Keeps Getting Blocked"
 description: "Modern bot detection isn't one wall — it's layers, from IP reputation to TLS fingerprints to behaviour. Here's how I think about each layer and stay under the radar."
-pubDate: 2026-05-06
+pubDate: 2024-03-12
 tags: ["anti-bot", "proxies", "fingerprinting"]
 draft: false
 ---

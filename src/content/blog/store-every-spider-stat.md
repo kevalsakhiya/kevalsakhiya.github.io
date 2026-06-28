@@ -1,7 +1,7 @@
 ---
 title: "One Run Tells You Nothing"
 description: "A single crawl's stats look fine in isolation — the signal is in the trend across runs. Why I persist every stat from every scheduled spider, and what that history unlocks."
-pubDate: 2026-06-27
+pubDate: 2025-01-22
 tags: ["scrapy", "monitoring", "observability"]
 draft: false
 ---

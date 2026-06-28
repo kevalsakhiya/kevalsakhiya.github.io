@@ -1,7 +1,7 @@
 ---
 title: "Don't Take the Bait"
 description: "Not all anti-bot defence tries to block you — some invites you in, then wastes, flags, or poisons your crawl. A field guide to the traps sites set for spiders, and how not to walk into them."
-pubDate: 2026-06-28
+pubDate: 2025-11-19
 tags: ["anti-bot", "honeypots", "crawling"]
 draft: false
 ---

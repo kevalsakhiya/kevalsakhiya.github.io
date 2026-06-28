@@ -1,7 +1,7 @@
 ---
 title: "My Proxy Was Leaking. SOCKS5 Plugged It."
 description: "I was rendering pages through residential proxies and still got banned — by my server's own IP. The browser was leaking requests around the HTTP proxy. SOCKS5 is what finally plugged the hole."
-pubDate: 2026-06-28
+pubDate: 2026-02-11
 tags: ["proxies", "playwright", "anti-bot"]
 draft: false
 ---

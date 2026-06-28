@@ -1,7 +1,7 @@
 ---
 title: "The Website Wasn't Lying. I Was."
 description: "A real-estate crawl that returned data not matching my own filters, a day spent convinced the site was messing with me, and the one-line Scrapy fix once I admitted the bug was mine. First in a Mistakes from the field series."
-pubDate: 2026-06-28
+pubDate: 2025-09-09
 tags: ["scrapy", "sessions", "mistakes-from-the-field"]
 draft: false
 ---

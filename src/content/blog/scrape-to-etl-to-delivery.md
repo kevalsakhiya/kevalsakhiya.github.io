@@ -1,7 +1,7 @@
 ---
 title: "Anyone Can Write a Spider"
 description: "Scraping is step one. The value is in turning raw, messy crawl output into clean, monitored, model-ready data that lands where it's needed — on a schedule, reliably."
-pubDate: 2026-06-18
+pubDate: 2024-08-14
 tags: ["etl", "airflow", "pyspark", "fastapi"]
 draft: false
 ---

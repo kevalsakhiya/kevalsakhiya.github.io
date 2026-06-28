@@ -1,7 +1,7 @@
 ---
 title: "One Spider Isn't Enough"
 description: "When one spider stops being enough — how Redis-backed queues turn a single crawler into a fleet, and the knobs that actually matter once you do."
-pubDate: 2026-04-15
+pubDate: 2024-01-18
 tags: ["scrapy", "distributed", "redis"]
 draft: false
 ---

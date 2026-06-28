@@ -1,7 +1,7 @@
 ---
 title: "Spider vs 403"
 description: "Every spider hates 403, and 403 hates every spider. A round-by-round deep dive into the protocol-level tells — headers, header order, TLS, HTTP/2 frames, and session — that decide who wins."
-pubDate: 2026-06-28
+pubDate: 2025-06-10
 tags: ["anti-bot", "http2", "fingerprinting"]
 draft: false
 ---

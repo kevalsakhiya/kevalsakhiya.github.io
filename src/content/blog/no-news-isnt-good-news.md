@@ -1,7 +1,7 @@
 ---
 title: "No News Isn't Good News"
 description: "Monitors only fire if the spider runs. The scariest failure is the one where nothing runs, nothing fires, and the silence reads as success. Here's how to alert on absence."
-pubDate: 2026-06-28
+pubDate: 2025-03-18
 tags: ["monitoring", "alerting", "reliability"]
 draft: false
 ---

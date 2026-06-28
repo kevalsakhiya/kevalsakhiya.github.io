@@ -1,7 +1,7 @@
 ---
 title: "Don't Trust a Spider You Can't Monitor"
 description: "A scheduled spider with no monitors is a liability waiting to happen. Here's the full checklist of what every spider monitor should actually assert — and how to wire it up with Spidermon."
-pubDate: 2026-06-24
+pubDate: 2024-11-05
 tags: ["spidermon", "monitoring", "data-quality"]
 draft: false
 ---

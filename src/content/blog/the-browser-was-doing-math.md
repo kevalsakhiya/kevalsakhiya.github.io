@@ -1,7 +1,7 @@
 ---
 title: "The Browser Was Doing Math. So I Did It Myself."
 description: "One field on a real-estate site forced an expensive browser render per property. It turned out the browser wasn't fetching that number — it was calculating it. So I reverse-engineered the math and cut a day-long crawl to four hours."
-pubDate: 2026-06-28
+pubDate: 2026-04-22
 tags: ["reverse-engineering", "performance", "javascript"]
 draft: false
 ---
