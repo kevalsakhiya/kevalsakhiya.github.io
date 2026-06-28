@@ -1,5 +1,5 @@
 ---
-title: "Scaling a Scrapy Crawl Past a Single Machine"
+title: "One Spider Isn't Enough"
 description: "When one spider stops being enough — how Redis-backed queues turn a single crawler into a fleet, and the knobs that actually matter once you do."
 pubDate: 2026-04-15
 tags: ["scrapy", "distributed", "redis"]
