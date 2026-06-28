@@ -28,8 +28,8 @@ const nav = [
         Resume <Icon name="download" size={16} />
       </a>
       <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle colour theme">
-        <Icon name="sun" size={18} class="ico-sun" />
-        <Icon name="moon" size={18} class="ico-moon" />
+        <span class="ico ico-sun"><Icon name="sun" size={18} /></span>
+        <span class="ico ico-moon"><Icon name="moon" size={18} /></span>
       </button>
       <button id="menu-toggle" class="icon-btn menu-only" type="button" aria-label="Toggle menu" aria-expanded="false">
         <span class="burger"></span>
@@ -79,9 +79,10 @@ const nav = [
   }
   .icon-btn:hover { color: var(--text); border-color: var(--accent); }
 
+  .ico-sun, .ico-moon { display: inline-flex; }
   .ico-moon { display: none; }
   :global(html[data-theme='dark']) .ico-sun { display: none; }
-  :global(html[data-theme='dark']) .ico-moon { display: block; }
+  :global(html[data-theme='dark']) .ico-moon { display: inline-flex; }
 
   .menu-only { display: none; }
   .burger { position: relative; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: background 0.2s; }
