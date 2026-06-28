@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="That page slipped through the crawl.">
+  <section class="section">
+    <div class="container center">
+      <p class="eyebrow">404</p>
+      <h1 class="big">This page slipped through the crawl.</h1>
+      <p class="sub">The link is broken or the page has moved.</p>
+      <a class="btn btn-primary" href="/">Back home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .center { text-align: center; padding-block: clamp(3rem, 10vw, 7rem); }
+  .big { font-size: clamp(2rem, 6vw, 3.4rem); margin: 0.8rem 0 0.6rem; }
+  .sub { color: var(--text-soft); margin-bottom: 2rem; }
+</style>

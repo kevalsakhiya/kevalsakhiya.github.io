@@ -1,0 +1,112 @@
+---
+import Icon from './Icon.astro';
+import { site, socials, stats } from '../data/site';
+---
+
+<section class="hero">
+  <div class="container grid">
+    <div class="copy">
+      <p class="eyebrow reveal">{site.location}</p>
+      <h1 class="reveal">
+        Hi, I'm {site.name}.<br />
+        <span class="accenty">{site.title}</span>
+      </h1>
+      <p class="lead reveal">{site.tagline}</p>
+
+      <div class="cta reveal">
+        <a class="btn btn-primary" href="/#projects">
+          View projects <Icon name="arrow" size={16} />
+        </a>
+        <a class="btn btn-ghost" href={site.resume} target="_blank" rel="noopener">
+          Download résumé <Icon name="download" size={16} />
+        </a>
+      </div>
+
+      <ul class="socials reveal">
+        {socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} title={s.label}>
+              <Icon name={s.icon} size={18} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="portrait reveal">
+      <div class="photo-wrap">
+        <img src={site.photo} alt={`Portrait of ${site.name}`} width="380" height="380" loading="eager" />
+      </div>
+      <div class="badge">
+        <span class="dot"></span> Open to new opportunities
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="stats reveal">
+      {stats.map((s) => (
+        <li>
+          <span class="num">{s.value}</span>
+          <span class="lbl">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+  .grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+
+  h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-top: 0.9rem; }
+  .accenty { color: var(--accent-ink); }
+  .lead { color: var(--text-soft); font-size: 1.18rem; margin-top: 1.4rem; max-width: 52ch; }
+
+  .cta { display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; }
+
+  .socials { display: flex; gap: 0.5rem; margin-top: 2rem; }
+  .socials a {
+    display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+    border-radius: 9px; border: 1px solid var(--border); color: var(--text-soft);
+    background: var(--surface); transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+  .socials a:hover { color: var(--accent-ink); border-color: var(--accent); transform: translateY(-2px); }
+
+  .portrait { position: relative; justify-self: center; }
+  .photo-wrap {
+    width: clamp(220px, 32vw, 360px); aspect-ratio: 1;
+    border-radius: 22px; overflow: hidden;
+    border: 1px solid var(--border); box-shadow: var(--shadow-lg);
+    background: linear-gradient(160deg, var(--accent-soft), var(--bg-soft));
+  }
+  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .badge {
+    position: absolute; left: 50%; bottom: -0.9rem; transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+    background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+    border-radius: 999px; padding: 0.45rem 0.9rem; font-size: 0.85rem; font-weight: 500; color: var(--text-soft);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 25%, transparent); }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+    background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .stats li { background: var(--surface); padding: 1.5rem 1.25rem; text-align: center; }
+  .num { display: block; font-family: var(--font-serif); font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--accent-ink); }
+  .lbl { display: block; color: var(--text-faint); font-size: 0.86rem; margin-top: 0.35rem; }
+
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: 1fr; text-align: center; }
+    .copy { order: 2; }
+    .portrait { order: 1; margin-bottom: 1rem; }
+    .lead { margin-inline: auto; }
+    .cta, .socials { justify-content: center; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

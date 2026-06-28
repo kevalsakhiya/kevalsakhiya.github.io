@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Icon from '../components/Icon.astro';
+import { about, competencies, openSource, education } from '../data/site';
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container about-grid">
+      <div class="section-head reveal" style="margin-bottom:0">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">What I do</h2>
+      </div>
+      <div class="about-body reveal">
+        {about.map((p) => <p>{p}</p>)}
+        <ul class="competencies">
+          {competencies.map((c) => <li class="chip chip-accent">{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Experience />
+  <Projects />
+  <Skills />
+
+  <!-- Open source + education -->
+  <section class="section">
+    <div class="container os-grid">
+      <div>
+        <div class="section-head reveal" style="margin-bottom:1.5rem">
+          <p class="eyebrow">Open source</p>
+          <h2 class="section-title">Giving back</h2>
+        </div>
+        <ul class="os-list">
+          {openSource.map((o) => (
+            <li class="reveal">
+              <a class="card os-item" href={o.href} target="_blank" rel="noopener">
+                <div>
+                  <h3 class="os-title">{o.title}</h3>
+                  <p class="os-desc">{o.desc}</p>
+                </div>
+                <Icon name="arrow" size={18} class="os-go" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="edu reveal">
+        <div class="section-head" style="margin-bottom:1.5rem">
+          <p class="eyebrow">Education</p>
+          <h2 class="section-title">Background</h2>
+        </div>
+        <div class="card edu-card">
+          <h3>{education.degree}</h3>
+          <p>{education.place}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>
+
+<style>
+  .about-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .about-body { display: grid; gap: 1.1rem; }
+  .about-body p { color: var(--text-soft); font-size: 1.05rem; }
+  .competencies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+  .os-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .os-list { display: grid; gap: 1rem; }
+  .os-item { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.4rem 1.5rem; }
+  .os-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .os-title { font-size: 1.1rem; }
+  .os-desc { color: var(--text-soft); margin-top: 0.3rem; font-size: 0.95rem; }
+  .os-go { color: var(--text-faint); flex-shrink: 0; }
+  .edu-card { padding: 1.5rem; }
+  .edu-card h3 { font-size: 1.1rem; }
+  .edu-card p { color: var(--text-faint); margin-top: 0.4rem; }
+
+  @media (max-width: 820px) {
+    .about-grid, .os-grid { grid-template-columns: 1fr; }
+  }
+</style>

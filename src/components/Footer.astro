@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import { site, socials } from '../data/site';
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <div class="top">
+      <div>
+        <a href="/" class="f-brand">{site.name}</a>
+        <p class="f-tag">{site.title} · {site.subtitle}</p>
+      </div>
+      <ul class="f-socials">
+        {socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} title={s.label}>
+              <Icon name={s.icon} size={18} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="bottom">
+      <span>© {year} {site.name}. Built with Astro.</span>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--border); background: var(--bg-soft); }
+  .inner { padding-block: 3rem; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .f-brand { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 540; }
+  .f-tag { color: var(--text-faint); font-size: 0.92rem; margin-top: 0.2rem; }
+  .f-socials { display: flex; gap: 0.5rem; }
+  .f-socials a {
+    display: grid; place-items: center; width: 2.4rem; height: 2.4rem;
+    border-radius: 8px; border: 1px solid var(--border); color: var(--text-soft);
+    background: var(--surface); transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+  .f-socials a:hover { color: var(--accent-ink); border-color: var(--accent); transform: translateY(-2px); }
+  .bottom {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    color: var(--text-faint); font-size: 0.88rem;
+  }
+  .bottom a:hover { color: var(--accent-ink); }
+</style>

@@ -1,0 +1,32 @@
+---
+import { skills, languages } from '../data/site';
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Toolkit</p>
+      <h2 class="section-title">The stack I reach for</h2>
+      <p>Languages: {languages.join(' · ')}</p>
+    </div>
+
+    <div class="grid">
+      {skills.map((g) => (
+        <div class="group card reveal">
+          <h3 class="g-title">{g.group}</h3>
+          <ul class="items">
+            {g.items.map((i) => <li class="chip">{i}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .group { padding: 1.5rem; }
+  .g-title { font-size: 1.05rem; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 1rem; }
+  .items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+</style>

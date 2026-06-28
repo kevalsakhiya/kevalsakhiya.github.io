@@ -1,0 +1,55 @@
+---
+import { projects } from '../data/site';
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="section-title">Pipelines that run, recover, and scale</h2>
+      <p>Flagship client systems — production crawlers and ETL feeding analytics and ML. Built under contract, so details are anonymised.</p>
+    </div>
+
+    <div class="grid">
+      {projects.map((p) => (
+        <article class="card project reveal">
+          <div class="p-top">
+            <span class="chip chip-accent">{p.tag}</span>
+          </div>
+          <h3 class="p-title">{p.title}</h3>
+          <p class="p-blurb">{p.blurb}</p>
+
+          <ul class="metrics">
+            {p.metrics.map((m) => <li>{m}</li>)}
+          </ul>
+
+          <ul class="stack">
+            {p.stack.map((s) => <li>{s}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .project { padding: 1.75rem; display: flex; flex-direction: column; }
+  .project:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+  .p-top { margin-bottom: 1rem; }
+  .p-title { font-size: 1.3rem; }
+  .p-blurb { color: var(--text-soft); margin-top: 0.7rem; font-size: 0.98rem; flex-grow: 1; }
+
+  .metrics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; }
+  .metrics li {
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500;
+    color: var(--accent-ink); background: var(--accent-soft);
+    padding: 0.3rem 0.6rem; border-radius: 6px;
+  }
+
+  .stack { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; margin-top: 1.3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
+  .stack li { font-size: 0.84rem; color: var(--text-faint); }
+  .stack li:not(:last-child)::after { content: '·'; margin-left: 0.9rem; color: var(--border); }
+
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+</style>

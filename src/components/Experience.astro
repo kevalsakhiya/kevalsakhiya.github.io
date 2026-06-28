@@ -1,0 +1,64 @@
+---
+import { experience } from '../data/site';
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Experience</p>
+      <h2 class="section-title">Seven years shipping crawlers in production</h2>
+      <p>Long-running, full-time engagements with US companies — owning crawl infrastructure end to end.</p>
+    </div>
+
+    <ol class="timeline">
+      {experience.map((job) => (
+        <li class="entry reveal">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="entry-body card">
+            <div class="entry-head">
+              <div>
+                <h3 class="role">{job.role}</h3>
+                <p class="company">{job.company} <span class="meta">· {job.meta}</span></p>
+              </div>
+              <span class="period chip">{job.period}</span>
+            </div>
+            <ul class="points">
+              {job.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline { position: relative; display: grid; gap: 1.5rem; padding-left: 1.75rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--border);
+  }
+  .entry { position: relative; }
+  .marker {
+    position: absolute; left: -1.75rem; top: 1.6rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .entry-body { padding: 1.5rem 1.6rem; }
+  .entry-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+  .role { font-size: 1.2rem; }
+  .company { color: var(--text-soft); margin-top: 0.2rem; font-weight: 500; }
+  .meta { color: var(--text-faint); font-weight: 400; }
+  .period { font-family: var(--font-mono); font-size: 0.78rem; white-space: nowrap; }
+  .points { margin-top: 1.1rem; display: grid; gap: 0.7rem; }
+  .points li { position: relative; padding-left: 1.4rem; color: var(--text-soft); font-size: 0.98rem; }
+  .points li::before {
+    content: ''; position: absolute; left: 0; top: 0.62em;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  }
+  @media (max-width: 560px) {
+    .timeline { padding-left: 1.4rem; }
+    .marker { left: -1.4rem; }
+  }
+</style>

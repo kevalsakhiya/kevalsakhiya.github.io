@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+import { site, socials } from '../data/site';
+---
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="left">
+        <p class="eyebrow">Contact</p>
+        <h2 class="section-title">Let's build something that scales</h2>
+        <p class="blurb">
+          Have a crawl that keeps breaking, data that needs cleaning, or a pipeline to stand up?
+          I'm open to contract and full-time work — drop me a line.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href={`mailto:${site.email}`}>
+            <Icon name="mail" size={16} /> {site.email}
+          </a>
+          <a class="btn btn-ghost" href={site.resume} target="_blank" rel="noopener">
+            Résumé <Icon name="download" size={16} />
+          </a>
+        </div>
+        <p class="loc"><Icon name="pin" size={15} /> {site.location}</p>
+      </div>
+
+      <ul class="links">
+        {socials.filter((s) => s.icon !== 'mail').map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener">
+              <span class="ic"><Icon name={s.icon} size={20} /></span>
+              <span class="lbl">{s.label}</span>
+              <Icon name="arrow" size={16} class="go" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem);
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: clamp(2rem, 5vw, 3.5rem);
+  }
+  .blurb { color: var(--text-soft); margin-top: 1rem; max-width: 44ch; }
+  .cta { display: flex; gap: 0.8rem; margin-top: 1.8rem; flex-wrap: wrap; }
+  .loc { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; color: var(--text-faint); font-size: 0.9rem; }
+
+  .links { display: grid; gap: 0.6rem; align-content: center; }
+  .links a {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    background: var(--bg-soft); transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+  }
+  .links a:hover { border-color: var(--accent); transform: translateX(3px); background: var(--surface); }
+  .ic { display: grid; place-items: center; color: var(--accent-ink); }
+  .lbl { font-weight: 500; flex-grow: 1; }
+  .go { color: var(--text-faint); }
+
+  @media (max-width: 720px) { .panel { grid-template-columns: 1fr; } }
+</style>
