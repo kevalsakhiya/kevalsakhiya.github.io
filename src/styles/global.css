@@ -10,7 +10,7 @@
   --border2: #d6d9df;
   --text: #15181d;
   --text-soft: #4a505a;
-  --text-faint: #767d89;
+  --text-faint: #646b77;
 
   /* Single accent — terminal green (tuned for legibility on light) */
   --accent: #16a34a;
@@ -47,7 +47,7 @@
   --border2: #2c3038;
   --text: #e9ebee;
   --text-soft: #9aa0aa;
-  --text-faint: #646a73;
+  --text-faint: #787f8a;
 
   --accent: #4ade80;
   --accent-soft: color-mix(in oklab, #4ade80 14%, transparent);
