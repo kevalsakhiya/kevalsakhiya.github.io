@@ -40,15 +40,17 @@ export const about = [
    large-scale distributed crawlers for US companies — across real estate, finance, e-commerce,
    and sports. The work I'm known for is the hard part: extracting reliably from sites that
    actively try to stop me.`,
-  `Deep Scrapy expertise — spiders, item pipelines, middlewares, and Redis-backed distributed
-   crawling deployed via Scrapyd / Scrapy Cloud / Gerapy — with async and multithreaded
-   architectures tuned for high-throughput, long-running jobs.`,
-  `Proven anti-bot depth (rotating residential/datacenter proxies, TLS/JA3 & browser
-   fingerprinting, CAPTCHA solving, stealth headless automation with Playwright and Selenium)
-   and rigorous data-quality validation, dedup, and normalisation into MongoDB / PostgreSQL.`,
-  `I own the full path from web-scale crawl → ETL → delivery: large-scale processing with
-   PySpark, orchestration with Apache Airflow, and production monitoring/alerting with
-   Spidermon. Open-source contributor to Scrapy.`,
+  `Scrapy is home turf. I build spiders, item pipelines, and middlewares, then scale them with
+   Redis-backed distributed crawling on Scrapyd, Scrapy Cloud, or Gerapy — async and
+   multithreaded architectures tuned to run hard for hours without falling over.`,
+  `This is where most scrapers die, and where I go deepest. I handle the full anti-bot stack —
+   rotating residential and datacenter proxies, TLS/JA3 and browser fingerprinting, CAPTCHA
+   solving, and stealth headless automation with Playwright and Selenium — then validate, dedup,
+   and normalise the results into clean MongoDB and PostgreSQL data you can trust.`,
+  `A working spider is only step one — the value is everything after it. I take the raw crawl
+   through ETL to delivery: large-scale processing with PySpark, orchestration with Apache
+   Airflow, and production monitoring and alerting with Spidermon, so the data arrives clean,
+   on schedule, and watched. I'm also an open-source contributor to Scrapy.`,
 ];
 
 export const competencies = [
