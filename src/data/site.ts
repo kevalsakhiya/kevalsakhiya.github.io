@@ -35,22 +35,24 @@ export const stats = [
   { count: 1000000, format: 'm', suffix: '+', label: 'Posts / day pipelines' },
 ];
 
+// Bold spans (rendered via set:html) highlight the claim + outcome in each
+// paragraph so the section is skimmable.
 export const about = [
-  `I'm a web-scraping specialist and Python developer with 7+ years building and running
-   large-scale distributed crawlers for US companies — across real estate, finance, e-commerce,
-   and sports. The work I'm known for is the hard part: extracting reliably from sites that
-   actively try to stop me.`,
-  `Scrapy is home turf. I build spiders, item pipelines, and middlewares, then scale them with
-   Redis-backed distributed crawling on Scrapyd, Scrapy Cloud, or Gerapy — async and
-   multithreaded architectures tuned to run hard for hours without falling over.`,
-  `Anti-bot is where most scrapers die — and where I go deepest. I handle all of it —
+  `I'm a <strong>web-scraping specialist and Python developer</strong> with <strong>7+ years</strong>
+   building and running large-scale distributed crawlers for US companies — across real estate,
+   finance, e-commerce, and sports. The work I'm known for is the hard part: extracting reliably
+   from sites that actively try to stop me.`,
+  `<strong>Scrapy is home turf.</strong> I build spiders, item pipelines, and middlewares, then scale
+   them with Redis-backed distributed crawling on Scrapyd, Scrapy Cloud, or Gerapy — async and
+   multithreaded architectures tuned to <strong>run hard for hours without falling over</strong>.`,
+  `<strong>Anti-bot is where most scrapers die</strong> — and where I go deepest. I handle all of it —
    rotating residential and datacenter proxies, TLS/JA3 and browser fingerprinting, CAPTCHA
    solving, and stealth headless automation with Playwright and Selenium — then validate, dedup,
-   and normalise the results into clean MongoDB and PostgreSQL data you can trust.`,
-  `A working spider is only step one — the value is everything after it. I take the raw crawl
-   through ETL to delivery: large-scale processing with PySpark, orchestration with Apache
-   Airflow, and production monitoring and alerting with Spidermon, so the data arrives clean,
-   on schedule, and watched. I'm also an open-source contributor to Scrapy.`,
+   and normalise the results into <strong>clean MongoDB and PostgreSQL data you can trust</strong>.`,
+  `A working spider is only step one — <strong>the value is everything after it</strong>. I take the
+   raw crawl through ETL to delivery: large-scale processing with PySpark, orchestration with
+   Apache Airflow, and production monitoring and alerting with Spidermon, so the data arrives
+   <strong>clean, on schedule, and watched</strong>. I'm also an open-source contributor to Scrapy.`,
 ];
 
 export const competencies = [

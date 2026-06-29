@@ -22,7 +22,7 @@ import { about, competencies, openSource, education } from '../data/site';
           and keep it running in production.
         </h2>
         <div class="about-body reveal" data-delay="100">
-          {about.map((p) => <p>{p}</p>)}
+          {about.map((p) => <p set:html={p} />)}
           <ul class="competencies">
             {competencies.map((c) => <li class="chip">{c}</li>)}
           </ul>
@@ -79,6 +79,7 @@ import { about, competencies, openSource, education } from '../data/site';
   .statement { font-size: clamp(1.55rem, 3.4vw, 2.5rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
   .about-body { display: grid; gap: 1.1rem; }
   .about-body p { color: var(--text-soft); font-size: 1.02rem; line-height: 1.7; }
+  .about-body :global(strong) { color: var(--text); font-weight: 600; }
   .competencies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
   .os-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; align-items: stretch; }
