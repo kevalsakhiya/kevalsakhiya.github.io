@@ -38,8 +38,8 @@ export const stats = [
 export const about = [
   `I'm a web-scraping specialist and Python developer with 7+ years building and running
    large-scale distributed crawlers for US companies — across real estate, finance, e-commerce,
-   and sports. Everything I ship is Python at its core, and the work I'm known for is the hard
-   part: extracting reliably from sites that actively try to stop me.`,
+   and sports. The work I'm known for is the hard part: extracting reliably from sites that
+   actively try to stop me.`,
   `Deep Scrapy expertise — spiders, item pipelines, middlewares, and Redis-backed distributed
    crawling deployed via Scrapyd / Scrapy Cloud / Gerapy — with async and multithreaded
    architectures tuned for high-throughput, long-running jobs.`,
