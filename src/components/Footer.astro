@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { site, socials } from '../data/site';
-const year = 2026;
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
@@ -22,7 +22,7 @@ const year = 2026;
       </ul>
     </div>
     <div class="bottom">
-      <span>© {year} {site.name}. Built with Astro.</span>
+      <span>© {year} {site.name}.</span>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </div>
   </div>
