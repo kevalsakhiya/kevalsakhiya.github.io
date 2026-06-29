@@ -43,7 +43,7 @@ export const about = [
   `Scrapy is home turf. I build spiders, item pipelines, and middlewares, then scale them with
    Redis-backed distributed crawling on Scrapyd, Scrapy Cloud, or Gerapy — async and
    multithreaded architectures tuned to run hard for hours without falling over.`,
-  `This is where most scrapers die, and where I go deepest. I handle the full anti-bot stack —
+  `Anti-bot is where most scrapers die — and where I go deepest. I handle all of it —
    rotating residential and datacenter proxies, TLS/JA3 and browser fingerprinting, CAPTCHA
    solving, and stealth headless automation with Playwright and Selenium — then validate, dedup,
    and normalise the results into clean MongoDB and PostgreSQL data you can trust.`,
